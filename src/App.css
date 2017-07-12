@@ -1,4 +1,7 @@
 html, body, #root{
-  height:100%;
   background-color: #F7D0D5;
+}
+
+.App {
+    height:100%;
 }

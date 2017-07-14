@@ -1,9 +1,10 @@
-.Pomomaki {
+.PomomakiTimer {
   text-align: center;
   background: white;
   color: #333;
   height:600px;
-  margin: 150px;
+  width: 900px;
+  margin: 120px;
   padding: 40px;
   box-shadow: 0 0 20px #8A837F;
 }

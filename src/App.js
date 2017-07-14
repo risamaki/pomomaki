@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Pomomaki from './Pomomaki'
+import PomomakiTimer from './PomomakiTimer'
 
 // App Component should remain a littlel more specialized and exist really
 // only to contain our application itself 
@@ -8,7 +8,7 @@ import Pomomaki from './Pomomaki'
 const App = () => {
   return (
     <div className="App">
-      <Pomomaki name="maki"/>
+      <PomomakiTimer name="maki"/>
     </div>
   );
 };

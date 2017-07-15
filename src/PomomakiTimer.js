@@ -7,9 +7,9 @@ class PomomakiTimer extends Component {
         return (
             <div className="PomomakiTimer"> 
                 {/* Working Timer*/}
-               <CountdownTimer min="26" sec="0"/>
+               <CountdownTimer min="24" sec="0"/>
                 {/* Break Timer*/}
-               {/*<CountdownTimer minutes="10" seconds="0"/>  */}
+               <CountdownTimer min="10" sec="0"/>  
             </div>
         );
     };

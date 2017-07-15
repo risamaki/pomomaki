@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './PomomakiTimer.css'
-import WorkingTimer from './WorkingTimer'
+import CountdownTimer from './CountdownTimer'
 
 class PomomakiTimer extends Component {
-
     render() {
         return (
             <div className="PomomakiTimer"> 
-               <WorkingTimer/> 
+                {/* Working Timer*/}
+               <CountdownTimer min="26" sec="0"/>
+                {/* Break Timer*/}
+               {/*<CountdownTimer minutes="10" seconds="0"/>  */}
             </div>
         );
     };

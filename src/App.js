@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import PomomakiTimer from './PomomakiTimer'
+import TimerWrapper from './TimerWrapper'
 
 const App = () => {
   return (
     <div className="App">
-      <PomomakiTimer/>
+      <TimerWrapper/>
     </div>
   );
 };

@@ -3,14 +3,27 @@ import './CountdownTimer.css'
 
 class CountdownTimer extends Component {
 
-    // to set up an initial internal state 
+    // to set up an initial internal state, gets called only once 
     constructor(props) {
         super(props); // calls out to parent constructor 
-        this.state = {minutes: this.props.min, seconds:this.props.sec}
+        this.state = {
+            minutes: props.min, 
+            seconds: props.sec, 
+            timerType: props.timerType
+        }
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
     };
+
+    componentWillReceiveProps(props) {
+        console.log(props)
+        this.setState({
+            minutes: props.min, 
+            seconds: props.sec,
+            timerType: props.timerType
+        });
+    }
 
     startTimer() {
         // if timer isn't start it yet, set the Interval
@@ -32,12 +45,12 @@ class CountdownTimer extends Component {
                 seconds:seconds,
             });
         }
-       
-        // Check if we're at zero 
+
         if (seconds == 0) {
+            // Timer is complete
             if (minutes == 0) {
                 clearInterval(this.timer);
-            
+                this.props.timerSwitch(this.props.timerType)
         } else {
                 let minutes = this.state.minutes - 1;
                 let seconds = 59

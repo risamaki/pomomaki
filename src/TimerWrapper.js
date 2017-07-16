@@ -8,30 +8,45 @@ class TimerWrapper extends Component {
         super(props);
         this.state = {
             minutes: "0",
-            seconds: "5", 
-            timerType: "working"
+            seconds: "25", 
+            timerType: "Working"
         };
         this.handleTimerSwitch = this.handleTimerSwitch.bind(this);
+
+        this.workingPomoCount = 0;
     }
 
     // timerType is the type of the completed timer
     handleTimerSwitch(timerType) {
        
-        if (timerType == "working") {
-            // switch to break timer 
-            this.setState({
-                minutes: "0",
-                seconds: "10",
-                timerType: "break"
-            });
+        if (timerType == "Working") {
+            this.workingPomoCount++;
+            
+            // if 3 pomo's have been completed trigger long break
+            if (this.workingPomoCount == 3) {
+                // Reset Pomo count
+                this.workingPomoCount = 0;
+                this.setState({
+                    minutes: "0",
+                    seconds: "15",
+                    timerType: "Break"
+                });
+            } else {
+                // switch to basic break timer 
+                this.setState({
+                    minutes: "0",
+                    seconds: "5",
+                    timerType: "Break"
+                });
+            }
         } 
        
-        if (timerType == "break") {
+        if (timerType == "Break") {
             // switch to working timer
             this.setState({
                 minutes: "0",
-                seconds: "15",
-                timerType: "working"
+                seconds: "25",
+                timerType: "Working"
             });
         }
     }
@@ -39,12 +54,7 @@ class TimerWrapper extends Component {
     render() {
         return (
             <div className="TimeWrapper"> 
-                min = {this.state.minutes}
-                <br/>
-                sec = {this.state.seconds}
-                <br/>
-                timerType = {this.state.timerType}
-                <br/>
+                {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
                <CountdownTimer 
                 min = {this.state.minutes}
                 sec = {this.state.seconds}

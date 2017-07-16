@@ -36,7 +36,6 @@ class CountdownTimer extends Component {
         // Remove one second, set state so re-render happens
         let seconds = this.state.seconds;
         let minutes = this.state.minutes;
-        
         if (seconds > 0) {
             let seconds = this.state.seconds - 1
             let minutes = this.state.minutes
@@ -48,8 +47,10 @@ class CountdownTimer extends Component {
 
         if (seconds == 0) {
             // Timer is complete
+            // switch to other timer and reset state
             if (minutes == 0) {
                 clearInterval(this.timer);
+                this.timer = 0;
                 this.props.timerSwitch(this.props.timerType)
         } else {
                 let minutes = this.state.minutes - 1;

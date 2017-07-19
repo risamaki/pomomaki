@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './CountdownTimer.css'
+import Button from 'antd/lib/button';
 
 class CountdownTimer extends Component {
 
@@ -69,7 +70,7 @@ class CountdownTimer extends Component {
             <div className="CountdownTimer"> 
                 {this.state.minutes} min {this.state.seconds} sec
                 <br/>
-                <button onClick={this.startTimer}>Start</button>
+                <Button type="primary" onClick={this.startTimer}>Start</Button>
             </div>
         );
     };

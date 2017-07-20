@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './CountdownTimer.css'
-import Button from 'antd/lib/button';
+import { Message, MessageBox, Button } from 'element-react';
+import 'element-theme-default'
 
 class CountdownTimer extends Component {
+    
 
     // to set up an initial internal state, gets called only once 
     constructor(props) {
@@ -16,6 +18,7 @@ class CountdownTimer extends Component {
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
     };
+
 
     componentWillReceiveProps(props) {
         console.log(props)
@@ -34,6 +37,7 @@ class CountdownTimer extends Component {
     }
 
     countDown() {
+            
         // Remove one second, set state so re-render happens
         let seconds = this.state.seconds;
         let minutes = this.state.minutes;
@@ -50,6 +54,12 @@ class CountdownTimer extends Component {
             // Timer is complete
             // switch to other timer and reset state
             if (minutes == 0) {
+                MessageBox.msgbox({
+                    title: this.props.timerType + ' Timer is complete!',
+                    confirmButtonText: 'OK',
+                }).then (action => {
+                   console.log(action)
+                })
                 clearInterval(this.timer);
                 this.timer = 0;
                 this.props.timerSwitch(this.props.timerType)
@@ -64,13 +74,14 @@ class CountdownTimer extends Component {
             
         }
     }
+    
 
     render() {
         return (
             <div className="CountdownTimer"> 
                 {this.state.minutes} min {this.state.seconds} sec
                 <br/>
-                <Button type="primary" onClick={this.startTimer}>Start</Button>
+                <Button id="startTimer" type="primary" onClick={this.startTimer}>Start Timer</Button>
             </div>
         );
     };

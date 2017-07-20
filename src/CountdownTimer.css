@@ -1,1 +1,18 @@
-@import '~antd/dist/antd.css';
+button.el-button--primary {
+    color: black;
+    background-color: #FE6B6C;
+    border-color: #FE6B6C;
+}
+
+button.el-button--primary:hover  {
+    color: white;
+    background-color:  #FE6B6C;
+    border-color: #FE6B6C;
+    box-shadow: 0 0 10px #8A837F;
+}
+
+button.el-button--primary:focus {
+    color: black;
+    background-color:  white;
+    border-color: #FE6B6C;
+}

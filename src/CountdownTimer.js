@@ -21,7 +21,6 @@ class CountdownTimer extends Component {
 
 
     componentWillReceiveProps(props) {
-        console.log(props)
         this.setState({
             minutes: props.min, 
             seconds: props.sec,
@@ -34,6 +33,27 @@ class CountdownTimer extends Component {
         if (this.timer === 0) {
             this.timer = setInterval(this.countDown, 1000);
         }
+    }
+
+    stopTimer() {
+        MessageBox.confirm('Would you like to stop the timer?', 'Warning', {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            type:'warning'
+        }).then( () => {
+            clearInterval(this.timer); // this isnt working
+            this.timer = 0;
+            // reset to intial state
+            this.setState({
+            minutes: this.props.min, 
+            seconds: this.props.sec,
+            timerType: this.props.timerType
+            });
+            Message ({
+                message: 'Timer was stopped'
+            })
+            
+        })
     }
 
     countDown() {
@@ -55,7 +75,7 @@ class CountdownTimer extends Component {
             // switch to other timer and reset state
             if (minutes == 0) {
                 MessageBox.msgbox({
-                    title: this.props.timerType + ' Timer is complete!',
+                    title: this.props.timerType + ' timer is complete!',
                     confirmButtonText: 'OK',
                 }).then (action => {
                    console.log(action)

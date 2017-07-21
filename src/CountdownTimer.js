@@ -12,11 +12,14 @@ class CountdownTimer extends Component {
         this.state = {
             minutes: props.min, 
             seconds: props.sec, 
-            timerType: props.timerType
+            timerType: props.timerType,
+            startButton: true
         }
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
+        this.stopTimer = this.stopTimer.bind(this);
         this.countDown = this.countDown.bind(this);
+        
     };
 
 
@@ -29,10 +32,15 @@ class CountdownTimer extends Component {
     }
 
     startTimer() {
+         this.setState({
+            startButton: false
+        });
+        console.log(this.state.startButton)
         // if timer isn't start it yet, set the Interval
         if (this.timer === 0) {
             this.timer = setInterval(this.countDown, 1000);
         }
+        
     }
 
     stopTimer() {
@@ -43,21 +51,25 @@ class CountdownTimer extends Component {
         }).then( () => {
             clearInterval(this.timer); // this isnt working
             this.timer = 0;
-            // reset to intial state
+           
+           // reset to intial state
             this.setState({
-            minutes: this.props.min, 
-            seconds: this.props.sec,
-            timerType: this.props.timerType
+                minutes: this.props.min, 
+                seconds: this.props.sec,
+                timerType: this.props.timerType,
+                startButton: true
             });
             Message ({
                 message: 'Timer was stopped'
             })
-            
+        }).catch( () => {
+            Message ({
+                message: 'Timer will continue'
+            })
         })
     }
 
     countDown() {
-            
         // Remove one second, set state so re-render happens
         let seconds = this.state.seconds;
         let minutes = this.state.minutes;
@@ -80,9 +92,15 @@ class CountdownTimer extends Component {
                 }).then (action => {
                    console.log(action)
                 })
+
+                this.setState({
+                    startButton: true
+                });
+
                 clearInterval(this.timer);
                 this.timer = 0;
                 this.props.timerSwitch(this.props.timerType)
+
         } else {
                 let minutes = this.state.minutes - 1;
                 let seconds = 59
@@ -97,13 +115,25 @@ class CountdownTimer extends Component {
     
 
     render() {
-        return (
-            <div className="CountdownTimer"> 
-                {this.state.minutes} min {this.state.seconds} sec
-                <br/>
-                <Button id="startTimer" type="primary" onClick={this.startTimer}>Start Timer</Button>
-            </div>
-        );
+        if (this.state.startButton == true) {
+            return (
+                <div className="CountdownTimer"> 
+                    {this.state.minutes} min {this.state.seconds} sec
+                    <br/>
+                    <Button id="startTimer" type="primary" onClick={this.startTimer}>Start Timer</Button>
+                </div>
+            );
+        } else {
+             return (
+                <div className="CountdownTimer"> 
+                    {this.state.minutes} min {this.state.seconds} sec
+                    <br/>
+                    <Button id="startTimer" type="primary" onClick={this.stopTimer}>Stop Timer</Button>
+                </div>
+            );
+        }
+        
+       
     };
 };
 

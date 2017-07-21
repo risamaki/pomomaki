@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './CountdownTimer.css'
-import { Message, MessageBox, Button } from 'element-react';
-import 'element-theme-default'
+import { Message, MessageBox, Button} from 'element-react';
+import './button.css'
 
 class CountdownTimer extends Component {
     

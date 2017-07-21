@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import './TimerWrapper.css'
+import './PomomakiTimer.css'
 import CountdownTimer from './CountdownTimer'
+import Settings from './Settings'
+import {Icon, Button, Layout} from 'element-react';
+import './button.css'
 
-class TimerWrapper extends Component {
+class PomomakiTimer extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             minutes: "0",
             seconds: "25", 
-            timerType: "Working"
+            timerType: "Working",
+            dialogVisible: false
         };
         this.handleTimerSwitch = this.handleTimerSwitch.bind(this);
 
@@ -53,7 +57,8 @@ class TimerWrapper extends Component {
 
     render() {
         return (
-            <div className="TimeWrapper"> 
+            <div className="PomomakiTimer"> 
+                <Settings/>
                 {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
                <CountdownTimer 
                 min = {this.state.minutes}
@@ -65,4 +70,4 @@ class TimerWrapper extends Component {
     };
 };
 
-export default TimerWrapper;
+export default PomomakiTimer;

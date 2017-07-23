@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './PomomakiTimer.css'
 import CountdownTimer from './CountdownTimer'
-import Settings from './Settings'
-import {Icon, Button, Layout} from 'element-react';
-import './button.css'
+import {Layout} from 'element-react';
+import './col.css'
+import './row.css'
+
 
 class PomomakiTimer extends Component {
 
@@ -22,11 +23,12 @@ class PomomakiTimer extends Component {
 
     // timerType is the type of the completed timer
     handleTimerSwitch(timerType) {
-       
+       // eslint-disable-next-line
         if (timerType == "Working") {
             this.workingPomoCount++;
             
             // if 3 pomo's have been completed trigger long break
+            // eslint-disable-next-line
             if (this.workingPomoCount == 3) {
                 // Reset Pomo count
                 this.workingPomoCount = 0;
@@ -44,7 +46,7 @@ class PomomakiTimer extends Component {
                 });
             }
         } 
-       
+       // eslint-disable-next-line
         if (timerType == "Break") {
             // switch to working timer
             this.setState({
@@ -57,15 +59,19 @@ class PomomakiTimer extends Component {
 
     render() {
         return (
-            <div className="PomomakiTimer"> 
-                <Settings/>
-                {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
-               <CountdownTimer 
-                min = {this.state.minutes}
-                sec = {this.state.seconds}
-                timerType = {this.state.timerType} 
-                timerSwitch = {this.handleTimerSwitch}/>
-            </div>
+            <Layout.Row align="middle">
+                <Layout.Col offset="1" span="14">
+                    <div className="PomomakiTimer"> 
+                        {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
+                        <CountdownTimer 
+                            min = {this.state.minutes}
+                            sec = {this.state.seconds}
+                            timerType = {this.state.timerType} 
+                            timerSwitch = {this.handleTimerSwitch}/>
+                    </div>
+                </Layout.Col>
+            </Layout.Row>
+            
         );
     };
 };

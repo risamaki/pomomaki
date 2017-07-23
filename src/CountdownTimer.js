@@ -82,9 +82,11 @@ class CountdownTimer extends Component {
             });
         }
 
+        // eslint-disable-next-line
         if (seconds == 0) {
             // Timer is complete
             // switch to other timer and reset state
+            // eslint-disable-next-line
             if (minutes == 0) {
                 MessageBox.msgbox({
                     title: this.props.timerType + ' timer is complete!',
@@ -115,6 +117,7 @@ class CountdownTimer extends Component {
     
 
     render() {
+        // eslint-disable-next-line
         if (this.state.startButton == true) {
             return (
                 <div className="CountdownTimer"> 

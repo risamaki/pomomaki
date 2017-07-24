@@ -1,16 +1,15 @@
-.TimerWrapper {
+
+.PomomakiTimer {
   /*Flexbox way of centering div -- ends up centering both divs*/
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
 
-.PomomakiTimer {
   text-align: center;
   background: white;
   color: #333;
-  margin:10px;
+  /*margin:10px;*/
   padding: 60px;
-  height:600px;
-  box-shadow: 0 0 20px #8A837F;
+  height:500px;
+  box-shadow: 0 10px 10px #8A837F;
 }

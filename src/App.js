@@ -9,6 +9,11 @@ import './row.css'
 const App = () => {
   return (
     <div className="App">
+        <Layout.Row>
+            <Layout.Col offset="1" span="15">
+              <Settings/>
+            </Layout.Col>
+        </Layout.Row>
          <Layout.Row align="middle">
             <Layout.Col className = "App_Timer" offset="1" span="15">
                 <PomomakiTimer/>

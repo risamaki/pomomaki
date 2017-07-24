@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Settings.css'
-import {} from 'element-react';
+import {Icon, Button} from 'element-react';
 
 class Settings extends Component {
 
@@ -11,7 +11,7 @@ class Settings extends Component {
     render() {
         return (
             <div className = "Settings">
-                Settings
+                <Button type="primary">Settings</Button>
             </div>
         );
     };

@@ -59,20 +59,13 @@ class PomomakiTimer extends Component {
     render() {
         return (
             <div className="PomomakiTimer">
-                <div className ="SettingWrapper">
-                    <div className="Settings">
-                        <Settings/>
-                    </div>
-                </div>
-                <div className = "TimerWrapper">
-                    <div className="Timer"> 
-                        {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
-                        <CountdownTimer 
-                            min = {this.state.minutes}
-                            sec = {this.state.seconds}
-                            timerType = {this.state.timerType} 
-                            timerSwitch = {this.handleTimerSwitch}/>
-                    </div>
+                <div className="Timer"> 
+                    {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
+                    <CountdownTimer 
+                        min = {this.state.minutes}
+                        sec = {this.state.seconds}
+                        timerType = {this.state.timerType} 
+                        timerSwitch = {this.handleTimerSwitch}/>
                 </div>
             </div>
        

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './PomomakiTimer.css'
 import CountdownTimer from './CountdownTimer'
+import Settings from './Settings'
 import {Layout} from 'element-react';
-import './col.css'
 import './row.css'
-
 
 class PomomakiTimer extends Component {
 
@@ -59,9 +58,14 @@ class PomomakiTimer extends Component {
 
     render() {
         return (
-            <Layout.Row align="middle">
-                <Layout.Col offset="1" span="14">
-                    <div className="PomomakiTimer"> 
+            <div className="PomomakiTimer">
+                <div className ="SettingWrapper">
+                    <div className="Settings">
+                        <Settings/>
+                    </div>
+                </div>
+                <div className = "TimerWrapper">
+                    <div className="Timer"> 
                         {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
                         <CountdownTimer 
                             min = {this.state.minutes}
@@ -69,9 +73,9 @@ class PomomakiTimer extends Component {
                             timerType = {this.state.timerType} 
                             timerSwitch = {this.handleTimerSwitch}/>
                     </div>
-                </Layout.Col>
-            </Layout.Row>
-            
+                </div>
+            </div>
+       
         );
     };
 };

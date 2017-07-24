@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './CountdownTimer.css'
 import { Message, MessageBox, Button} from 'element-react';
 import './button.css'
+import './message-box.css'
+import './message.css'
 
 class CountdownTimer extends Component {
     
@@ -35,7 +37,6 @@ class CountdownTimer extends Component {
          this.setState({
             startButton: false
         });
-        console.log(this.state.startButton)
         // if timer isn't start it yet, set the Interval
         if (this.timer === 0) {
             this.timer = setInterval(this.countDown, 1000);
@@ -81,7 +82,6 @@ class CountdownTimer extends Component {
                 seconds:seconds,
             });
         }
-
         // eslint-disable-next-line
         if (seconds == 0) {
             // Timer is complete

@@ -1,11 +1,19 @@
 import React from 'react';
 import './App.css';
 import PomomakiTimer from './PomomakiTimer'
+import Settings from './Settings'
+import {Layout} from 'element-react';
+import './col.css'
+import './row.css'
 
 const App = () => {
   return (
     <div className="App">
-      <PomomakiTimer/>
+         <Layout.Row align="middle">
+            <Layout.Col className = "App_Timer" offset="1" span="15">
+                <PomomakiTimer/>
+            </Layout.Col>
+        </Layout.Row>
     </div>
   );
 };

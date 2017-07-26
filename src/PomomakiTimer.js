@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './PomomakiTimer.css'
 import CountdownTimer from './CountdownTimer'
-import Settings from './Settings'
-import {Layout} from 'element-react';
+import {} from 'element-react';
 import './row.css'
 
 class PomomakiTimer extends Component {

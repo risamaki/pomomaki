@@ -3,3 +3,7 @@
   color: #333;
   margin:10px;
 }
+
+.el-dialog__header{
+  text-align: center;
+}

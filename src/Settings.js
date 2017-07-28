@@ -13,19 +13,19 @@ class Settings extends Component {
 
         this.state = {
             dialogVisible: false,
-            
+            // default values already in there -- this way they can be passed down
             form: {
-                workingTime: '',
-                shortBreakTime: '',
-                longBreakTime: ''
+                workingTime: '25',
+                shortBreakTime: '5',
+                longBreakTime: '10'
             },
 
             rules: {
                 workingTime: [
-                    { required: true, message: "Please input a working Time", trigger:'blur' },
+                    { required: true, message: "Please input a working time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
 
-                        var number = parseInt(value);
+                        var number = parseInt(value, 10);
 
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
@@ -43,7 +43,7 @@ class Settings extends Component {
                     { required: true, message: "Please input a break length (short)", trigger:'blur' },
                     { validator: (rule, value, callback) => {
 
-                        var number = parseInt(value);
+                        var number = parseInt(value, 10);
 
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
@@ -61,7 +61,7 @@ class Settings extends Component {
                     { required: true, message: "Please input a break length (long)", trigger:'blur' },
                     { validator: (rule, value, callback) => {
 
-                        var number = parseInt(value);
+                        var number = parseInt(value, 10);
 
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
@@ -79,6 +79,27 @@ class Settings extends Component {
             }
         }
     }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        this.refs.form.validate((valid) => {
+            if (valid) {
+                console.log('submit sucessfull')
+                this.setState({dialogVisible: false})
+            } else {
+                console.log('error in submitting!!');
+                return false;
+            }
+        });
+    }
+
+    handleReset(e) {
+        e.preventDefault();
+
+        this.setState({dialogVisible: false})
+    }
+
 
     onChange(key, value) {
         this.setState({
@@ -108,9 +129,8 @@ class Settings extends Component {
                         </Form>
                     </Dialog.Body>
                     <Dialog.Footer className="dialog-footer">
-                        {/*TODO: change to save the input values*/}
-                        <Button type="primary" onClick ={() => this.setState({dialogVisible: false})}> Okay </Button>
-                        <Button onClick ={() => this.setState({dialogVisible: false})}> Cancel </Button>
+                        <Button type="primary" onClick ={this.handleSubmit.bind(this)}> Okay </Button>
+                        <Button onClick ={this.handleReset.bind(this)}> Cancel </Button>
                     </Dialog.Footer>
                 </Dialog>
             </div>

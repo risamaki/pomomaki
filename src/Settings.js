@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './Settings.css'
-import {Button, Dialog, Form, Input} from 'element-react';
+import {Button, Dialog, Form, Input, Layout} from 'element-react';
+import PomomakiTimer from './PomomakiTimer'
 import './form.css'
 import './form-item.css'
 import './input.css'
 import './dialog.css'
+import './col.css'
+import './row.css'
 
 class Settings extends Component {
 
@@ -133,6 +136,14 @@ class Settings extends Component {
                         <Button onClick ={this.handleReset.bind(this)}> Cancel </Button>
                     </Dialog.Footer>
                 </Dialog>
+                <div className = "settingsTimer">
+                    <Layout.Row align="middle">
+                        <Layout.Col className = "App_Timer" >
+                            <PomomakiTimer/>
+                        </Layout.Col>
+                    </Layout.Row>
+                </div>
+                
             </div>
         );
     };

@@ -9,14 +9,21 @@ class PomomakiTimer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            minutes: "0",
-            seconds: "25", 
+            minutes: props.workingMin,
+            seconds: props.workingSec,
             timerType: "Working",
-            dialogVisible: false
         };
         this.handleTimerSwitch = this.handleTimerSwitch.bind(this);
 
         this.workingPomoCount = 0;
+    }
+
+     componentWillReceiveProps(props) {
+        this.setState({
+            minutes: props.workingMin, 
+            seconds: props.workingSec,
+            timerType: "Working"
+        });
     }
 
     // timerType is the type of the completed timer
@@ -31,15 +38,15 @@ class PomomakiTimer extends Component {
                 // Reset Pomo count
                 this.workingPomoCount = 0;
                 this.setState({
-                    minutes: "0",
-                    seconds: "15",
+                    minutes: this.props.longBreakMin,
+                    seconds: this.props.longBreakSec,
                     timerType: "Break"
                 });
             } else {
                 // switch to basic break timer 
                 this.setState({
-                    minutes: "0",
-                    seconds: "5",
+                    minutes: this.props.shortBreakMin,
+                    seconds: this.props.shortBreakSec,
                     timerType: "Break"
                 });
             }
@@ -48,8 +55,8 @@ class PomomakiTimer extends Component {
         if (timerType == "Break") {
             // switch to working timer
             this.setState({
-                minutes: "0",
-                seconds: "25",
+                minutes: this.props.workingMin,
+                seconds: this.props.workingSec,
                 timerType: "Working"
             });
         }

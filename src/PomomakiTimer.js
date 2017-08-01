@@ -31,7 +31,7 @@ class PomomakiTimer extends Component {
        // eslint-disable-next-line
         if (timerType == "Working") {
             this.workingPomoCount++;
-            
+            this.props.toggleSettingVisibility()
             // if 3 pomo's have been completed trigger long break
             // eslint-disable-next-line
             if (this.workingPomoCount == 3) {
@@ -70,7 +70,9 @@ class PomomakiTimer extends Component {
                         min = {this.state.minutes}
                         sec = {this.state.seconds}
                         timerType = {this.state.timerType} 
-                        timerSwitch = {this.handleTimerSwitch}/>
+                        timerSwitch = {this.handleTimerSwitch}
+                        toggleSettingVisibilityOff = {this.props.toggleSettingVisibilityOff}
+                        toggleSettingVisibilityOn = {this.props.toggleSettingVisibilityOn}/>
             </div>
        
         );

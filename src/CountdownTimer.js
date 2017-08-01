@@ -37,6 +37,7 @@ class CountdownTimer extends Component {
          this.setState({
             startButton: false
         });
+        this.props.toggleSettingVisibilityOff()
         // if timer isn't start it yet, set the Interval
         if (this.timer === 0) {
             this.timer = setInterval(this.countDown, 1000);
@@ -52,8 +53,8 @@ class CountdownTimer extends Component {
         }).then( () => {
             clearInterval(this.timer); // this isnt working
             this.timer = 0;
-           
-           // reset to intial state
+            this.props.toggleSettingVisibilityOn()
+            // reset to intial state
             this.setState({
                 minutes: this.props.min, 
                 seconds: this.props.sec,

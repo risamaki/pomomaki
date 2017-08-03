@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import './Settings.css'
-import {Button, Dialog, Form, Input, Layout} from 'element-react';
 import PomomakiTimer from './PomomakiTimer'
-import './form.css'
-import './form-item.css'
-import './input.css'
-import './dialog.css'
-import './col.css'
-import './row.css'
+
+import {Button, Dialog, Form, Input, Layout} from 'element-react';
+
+import '../src/styles/Settings.css'
+import '../src/styles/theme/form.css'
+import '../src/styles/theme/form-item.css'
+import '../src/styles/theme/input.css'
+import '../src/styles/theme/dialog.css'
+import '../src/styles/theme/row.css'
 
 class Settings extends Component {
 
@@ -133,10 +134,7 @@ class Settings extends Component {
 
 
             }
-        }
-        this.toggleSettingVisibilityOff = this.toggleSettingVisibilityOff.bind(this);
-        this.toggleSettingVisibilityOn = this.toggleSettingVisibilityOn.bind(this);
-        
+        }        
     }
 
     handleSubmit(e) {
@@ -166,119 +164,77 @@ class Settings extends Component {
         });
     }
 
-    toggleSettingVisibilityOff() {
-        this.setState({
-            settingVisible: false
-        });
-       
-        
-    }
-
-    toggleSettingVisibilityOn() {
-        this.setState({
-            settingVisible: true
-        });
-
-    }
-
     render() {
+        return (
+            <div className = "Settings">
+                <Button id="settingsTitle" type="primary" onClick={ () => this.setState({dialogVisible: true}) }>Settings</Button>
+                <Dialog
+                    title="Set your times here!"
+                    visible={ this.state.dialogVisible }
+                    onCancel={ () => this.setState({ dialogVisible: false }) }>
+                    <Dialog.Body>
+                        <Form ref="form" model={this.state.form} rules={this.state.rules}>
+                            <Layout.Row>
+                                <Layout.Col span="12">
+                                    <Form.Item label="Working Minutes" prop="workingMin" labelWidth="100">
+                                        <Input value={this.state.form.workingMin} onChange={this.onChange.bind(this, 'workingMin')}></Input>
+                                    </Form.Item>
+                                </Layout.Col>
+                                <Layout.Col span="12">
+                                    <Form.Item label="Seconds" prop="workingSec" labelWidth="100">
+                                        <Input value={this.state.form.workingSec} onChange={this.onChange.bind(this, 'workingSec')}></Input>
+                                    </Form.Item> 
+                                </Layout.Col>
+                            </Layout.Row>
+                            <Layout.Row>
+                                <Layout.Col span="12">
+                                    <Form.Item label="Short Break Minutes" prop="shortBreakMin" labelWidth="100">
+                                        <Input value={this.state.form.shortBreakMin} onChange={this.onChange.bind(this, 'shortBreakMin')}></Input>
+                                    </Form.Item>
+                                </Layout.Col>
+                                <Layout.Col span="12">
+                                    <Form.Item label="Seconds" prop="shortBreakSec" labelWidth="100">
+                                        <Input value={this.state.form.shortBreakSec} onChange={this.onChange.bind(this, 'shortBreakSec')}></Input>
+                                    </Form.Item>
+                                </Layout.Col>
+                            </Layout.Row>
+                            <Layout.Row>
+                                <Layout.Col span="12"> 
+                                    <Form.Item label="Long Break Minutes" prop="longBreakMin" labelWidth="100">
+                                        <Input value={this.state.form.longBreakMin} onChange={this.onChange.bind(this, 'longBreakMin')}></Input>
+                                    </Form.Item>
+                                </Layout.Col>
+                                <Layout.Col span="12">
+                                    <Form.Item label="Seconds" prop="longBreakSec" labelWidth="100">
+                                        <Input value={this.state.form.longBreakSec} onChange={this.onChange.bind(this, 'longBreakSec')}></Input>
+                                    </Form.Item>
+                                </Layout.Col>  
+                            </Layout.Row>
+                        </Form>
+                    </Dialog.Body>
+                    <Dialog.Footer className="dialog-footer">
+                        <Button type="primary" onClick ={this.handleSubmit.bind(this)}> Okay </Button>
+                        <Button onClick ={this.handleReset.bind(this)}> Cancel </Button>
+                    </Dialog.Footer>
+                </Dialog>
+                <div className = "settingsTimer">
+                    <Layout.Row align="middle">
+                        <Layout.Col className = "App_Timer" >
+                            <PomomakiTimer
+                                workingMin = {this.state.form.workingMin}
+                                workingSec = {this.state.form.workingSec}
+                                shortBreakMin = {this.state.form.shortBreakMin}
+                                shortBreakSec = {this.state.form.shortBreakSec}
+                                longBreakMin = {this.state.form.longBreakMin}
+                                longBreakSec = {this.state.form.longBreakSec}
 
-        if (this.state.settingVisible == true) {
-            return (
-                <div className = "Settings">
-                    <Button id="settingsTitle" type="primary" onClick={ () => this.setState({dialogVisible: true}) }>Settings</Button>
-                    <Dialog
-                        title="Set your times here!"
-                        visible={ this.state.dialogVisible }
-                        onCancel={ () => this.setState({ dialogVisible: false }) }>
-                        <Dialog.Body>
-                            <Form ref="form" model={this.state.form} rules={this.state.rules}>
-                                <Layout.Row>
-                                    <Layout.Col span="12">
-                                        <Form.Item label="Working Minutes" prop="workingMin" labelWidth="100">
-                                            <Input value={this.state.form.workingMin} onChange={this.onChange.bind(this, 'workingMin')}></Input>
-                                        </Form.Item>
-                                    </Layout.Col>
-                                    <Layout.Col span="12">
-                                        <Form.Item label="Seconds" prop="workingSec" labelWidth="100">
-                                            <Input value={this.state.form.workingSec} onChange={this.onChange.bind(this, 'workingSec')}></Input>
-                                        </Form.Item> 
-                                    </Layout.Col>
-                                </Layout.Row>
-                                <Layout.Row>
-                                    <Layout.Col span="12">
-                                        <Form.Item label="Short Break Minutes" prop="shortBreakMin" labelWidth="100">
-                                            <Input value={this.state.form.shortBreakMin} onChange={this.onChange.bind(this, 'shortBreakMin')}></Input>
-                                        </Form.Item>
-                                    </Layout.Col>
-                                    <Layout.Col span="12">
-                                        <Form.Item label="Seconds" prop="shortBreakSec" labelWidth="100">
-                                            <Input value={this.state.form.shortBreakSec} onChange={this.onChange.bind(this, 'shortBreakSec')}></Input>
-                                        </Form.Item>
-                                    </Layout.Col>
-                                </Layout.Row>
-                                <Layout.Row>
-                                    <Layout.Col span="12"> 
-                                        <Form.Item label="Long Break Minutes" prop="longBreakMin" labelWidth="100">
-                                            <Input value={this.state.form.longBreakMin} onChange={this.onChange.bind(this, 'longBreakMin')}></Input>
-                                        </Form.Item>
-                                    </Layout.Col>
-                                    <Layout.Col span="12">
-                                        <Form.Item label="Seconds" prop="longBreakSec" labelWidth="100">
-                                            <Input value={this.state.form.longBreakSec} onChange={this.onChange.bind(this, 'longBreakSec')}></Input>
-                                        </Form.Item>
-                                    </Layout.Col>  
-                                </Layout.Row>
-                            </Form>
-                        </Dialog.Body>
-                        <Dialog.Footer className="dialog-footer">
-                            <Button type="primary" onClick ={this.handleSubmit.bind(this)}> Okay </Button>
-                            <Button onClick ={this.handleReset.bind(this)}> Cancel </Button>
-                        </Dialog.Footer>
-                    </Dialog>
-                    <div className = "settingsTimer">
-                        <Layout.Row align="middle">
-                            <Layout.Col className = "App_Timer" >
-                                <PomomakiTimer
-                                    workingMin = {this.state.form.workingMin}
-                                    workingSec = {this.state.form.workingSec}
-                                    shortBreakMin = {this.state.form.shortBreakMin}
-                                    shortBreakSec = {this.state.form.shortBreakSec}
-                                    longBreakMin = {this.state.form.longBreakMin}
-                                    longBreakSec = {this.state.form.longBreakSec}
-                                    toggleSettingVisibilityOff = {this.toggleSettingVisibilityOff}
-                                    toggleSettingVisibilityOn = {this.toggleSettingVisibilityOn}
-                                />
-                            </Layout.Col>
-                        </Layout.Row>
-                    </div>
+                            />
+                        </Layout.Col>
+                    </Layout.Row>
                 </div>
-            );
-        } else {
-            return(
-                <div className = "Settings">
-                    <Button disabled={true} id="settingsTitle" type="primary" onClick={ () => this.setState({dialogVisible: true}) }>Settings</Button>
-                    <div className = "settingsTimer">
-                        <Layout.Row align="middle">
-                            <Layout.Col className = "App_Timer" >
-                                <PomomakiTimer
-                                    workingMin = {this.state.form.workingMin}
-                                    workingSec = {this.state.form.workingSec}
-                                    shortBreakMin = {this.state.form.shortBreakMin}
-                                    shortBreakSec = {this.state.form.shortBreakSec}
-                                    longBreakMin = {this.state.form.longBreakMin}
-                                    longBreakSec = {this.state.form.longBreakSec}
-                                    toggleSettingVisibilityOff = {this.toggleSettingVisibilityOff}
-                                    toggleSettingVisibilityOn = {this.toggleSettingVisibilityOn}
-                                />
-                            </Layout.Col>
-                        </Layout.Row>
-                    </div>
-                </div>
-            );
-            
-        }
-
+            </div>
+        );
+    
     };
 };
 

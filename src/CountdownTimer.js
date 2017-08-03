@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './CountdownTimer.css'
+
 import { Message, MessageBox, Button} from 'element-react';
-import './button.css'
-import './message-box.css'
-import './message.css'
+
+import '../src/styles/CountdownTimer.css'
+import '../src/styles/theme/button.css'
+import '../src/styles/theme/message-box.css'
+import '../src/styles/theme/message.css'
 
 class CountdownTimer extends Component {
     
@@ -37,7 +39,6 @@ class CountdownTimer extends Component {
          this.setState({
             startButton: false
         });
-        this.props.toggleSettingVisibilityOff()
         // if timer isn't start it yet, set the Interval
         if (this.timer === 0) {
             this.timer = setInterval(this.countDown, 1000);
@@ -53,7 +54,6 @@ class CountdownTimer extends Component {
         }).then( () => {
             clearInterval(this.timer); // this isnt working
             this.timer = 0;
-            this.props.toggleSettingVisibilityOn()
             // reset to intial state
             this.setState({
                 minutes: this.props.min, 

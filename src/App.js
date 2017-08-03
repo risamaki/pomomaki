@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
-import PomomakiTimer from './PomomakiTimer'
-import Settings from './Settings'
-import {Layout} from 'element-react';
-import './col.css'
-import './row.css'
+import Settings from './Settings.js'
 
+import {Layout} from 'element-react';
+
+import '../src/styles/App.css';
+import '../src/styles/theme/col.css';
+import '../src/styles/theme/row.css';
 
 const App = () => {
   return (

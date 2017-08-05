@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import PomomakiTimer from './PomomakiTimer'
+import Pomodoro from '../../src/components/Pomodoro'
 
 import {Button, Dialog, Form, Input, Layout} from 'element-react';
 
-import '../src/styles/Settings.css'
-import '../src/styles/theme/form.css'
-import '../src/styles/theme/form-item.css'
-import '../src/styles/theme/input.css'
-import '../src/styles/theme/dialog.css'
-import '../src/styles/theme/row.css'
+import '../../src/styles/Settings.css'
+import '../../src/styles/theme/form.css'
+import '../../src/styles/theme/form-item.css'
+import '../../src/styles/theme/input.css'
+import '../../src/styles/theme/dialog.css'
+import '../../src/styles/theme/row.css'
 
 class Settings extends Component {
 
@@ -220,7 +220,7 @@ class Settings extends Component {
                 <div className = "settingsTimer">
                     <Layout.Row align="middle">
                         <Layout.Col className = "App_Timer" >
-                            <PomomakiTimer
+                            <Pomodoro
                                 workingMin = {this.state.form.workingMin}
                                 workingSec = {this.state.form.workingSec}
                                 shortBreakMin = {this.state.form.shortBreakMin}

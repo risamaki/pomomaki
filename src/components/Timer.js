@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import { Message, MessageBox, Button} from 'element-react';
 
-import '../src/styles/CountdownTimer.css'
-import '../src/styles/theme/button.css'
-import '../src/styles/theme/message-box.css'
-import '../src/styles/theme/message.css'
+import '../../src/styles/Timer.css'
+import '../../src/styles/theme/button.css'
+import '../../src/styles/theme/message-box.css'
+import '../../src/styles/theme/message.css'
 
-class CountdownTimer extends Component {
+class Timer extends Component {
     
 
     // to set up an initial internal state, gets called only once 
@@ -121,7 +121,7 @@ class CountdownTimer extends Component {
         // eslint-disable-next-line
         if (this.state.startButton == true) {
             return (
-                <div className="CountdownTimer"> 
+                <div className="Timer"> 
                     {this.state.minutes} min {this.state.seconds} sec
                     <br/>
                     <Button id="startTimer" type="primary" onClick={this.startTimer}>Start Timer</Button>
@@ -129,7 +129,7 @@ class CountdownTimer extends Component {
             );
         } else {
              return (
-                <div className="CountdownTimer"> 
+                <div className="Timer"> 
                     {this.state.minutes} min {this.state.seconds} sec
                     <br/>
                     <Button id="startTimer" type="primary" onClick={this.stopTimer}>Stop Timer</Button>
@@ -141,4 +141,4 @@ class CountdownTimer extends Component {
     };
 };
 
-export default CountdownTimer;
+export default Timer;

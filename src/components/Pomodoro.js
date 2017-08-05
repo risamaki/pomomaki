@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import CountdownTimer from './CountdownTimer'
+import Timer from '../../src/components/Timer'
 
 import {} from 'element-react';
 
-import '../src/styles/PomomakiTimer.css'
-import '../src/styles/theme/row.css'
+import '../../src/styles/Pomodoro.css'
+import '../../src/styles/theme/row.css'
 
-class PomomakiTimer extends Component {
+class Pomodoro extends Component {
 
     constructor(props) {
         super(props);
@@ -65,9 +65,11 @@ class PomomakiTimer extends Component {
 
     render() {
         return (
-            <div className="PomomakiTimer">
-                    {this.state.timerType} Timer! ({this.workingPomoCount} Pomo's Completed)
-                    <CountdownTimer 
+            <div className="Pomodoro">
+                    {this.state.timerType} Timer! 
+                    <bk/>
+                    ({this.workingPomoCount} Pomo's Completed)
+                    <Timer 
                         min = {this.state.minutes}
                         sec = {this.state.seconds}
                         timerType = {this.state.timerType} 
@@ -78,4 +80,4 @@ class PomomakiTimer extends Component {
     };
 };
 
-export default PomomakiTimer;
+export default Pomodoro;

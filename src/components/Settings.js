@@ -19,127 +19,128 @@ class Settings extends Component {
             dialogVisible: false,
             // default values already in there -- this way they can be passed down
             form: {
-                workingMin: '00',
-                workingSec: '25',
-                shortBreakMin: '00',
-                shortBreakSec:'10',
-                longBreakMin: '00',
-                longBreakSec: '15'
+                workingMin: '25',
+                workingSec: '00',
+                shortBreakMin: '5',
+                shortBreakSec:'00',
+                longBreakMin: '15',
+                longBreakSec: '00'
             },
             rules: {
+
+                // Working Time Length Rules
                 workingMin: [
-                    { required: true, message: "Please input the amount of time you are working", trigger:'blur' },
+                    { required: true, message: "Please input a valid time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
-
                         var number = parseInt(value, 10);
-
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
-                                callback (new Error('Please input digits'));
-                            } else {
+                                callback (new Error('Please input valid digits'));
+                            } 
+                            if (number < 0) {
+                                callback(new Error('Please input a valid time'))
+                            }
+                            else {
                                 callback();
-                        }
-                        }, 1000);
-                        
+                            }
+                        }, 1000);  
                     }, trigger :'change'}
-                    
                 ],
-
-                workinSec: [
+                workingSec: [
+                    { required: true, message: "Please input a valid time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
-
                         var number = parseInt(value, 10);
-
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
-                                callback (new Error('Please input digits'));
-                            } else {
+                                callback (new Error('Please input valid digits'));
+                            }
+                            if (number < 0 || number > 60) {
+                                callback(new Error('Please input a valid time'))
+                            }
+                            else {
                                 callback();
-                        }
-                        }, 1000);
-                        
-                    }, trigger :'change'}
-                    
+                            }
+                        }, 1000);  
+                    }, trigger :'change'}     
                 ],
 
+                // Short Break Length Rules
                 shortBreakMin: [
-                    { required: true, message: "Please input a break length (short)", trigger:'blur' },
+                    { required: true, message: "Please input a valid time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
-
                         var number = parseInt(value, 10);
-
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
-                                callback (new Error('Please input digits'));
-                            } else {
+                                callback (new Error('Please input valid digits'));
+                            } 
+                            if (number < 0) {
+                                callback(new Error('Please input a valid time'))
+                            }
+                            else {
                                 callback();
-                        }
+                            }
                         }, 1000);
-                        
-                    }, trigger :'change'}
-                    
+                    }, trigger :'change'}  
                 ],
-
                 shortBreakSec: [
+                    { required: true, message: "Please input a valid time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
-
                         var number = parseInt(value, 10);
-
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
-                                callback (new Error('Please input digits'));
-                            } else {
+                                callback (new Error('Please input valid digits'));
+                            } 
+                            if (number < 0 || number > 60) {
+                                callback(new Error('Please input a valid time'))
+                            }
+                            else {
                                 callback();
-                        }
-                        }, 1000);
-                        
+                            }
+                        }, 1000);   
                     }, trigger :'change'}
-                    
                 ],
-                
+
+                // Long Break Length Rules 
                 longBreakMin: [
-                    { required: true, message: "Please input a break length (long)", trigger:'blur' },
+                    { required: true, message: "Please input a valid time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
-
                         var number = parseInt(value, 10);
-
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
-                                callback (new Error('Please input digits'));
-                            } else {
+                                callback (new Error('Please input valid digits'));
+                            } 
+                            if (number < 0) {
+                                    callback(new Error('Please input a valid time'))
+                            }
+                            else {
                                 callback();
-                        }
+                            }
                         }, 1000);
-                        
                     }, trigger :'change'}
-                    
                 ],
-
                 longBreakSec: [
+                    { required: true, message: "Please input a valid time", trigger:'blur' },
                     { validator: (rule, value, callback) => {
-
                         var number = parseInt(value, 10);
-
                         setTimeout( () => {
                             if (!Number.isInteger(number)) {
-                                callback (new Error('Please input digits'));
-                            } else {
+                                callback (new Error('Please input valid digits'));
+                            } 
+                            if (number < 0 || number > 60) {
+                                    callback(new Error('Please input a valid time'))
+                            }
+                            else {
                                 callback();
-                        }
+                            }
                         }, 1000);
-                        
                     }, trigger :'change'}
-                    
                 ],
-
-
             }
         }        
     }
 
     handleSubmit(e) {
         e.preventDefault();
-
         this.refs.form.validate((valid) => {
             if (valid) {
                 console.log('submit sucessfull')
@@ -227,14 +228,12 @@ class Settings extends Component {
                                 shortBreakSec = {this.state.form.shortBreakSec}
                                 longBreakMin = {this.state.form.longBreakMin}
                                 longBreakSec = {this.state.form.longBreakSec}
-
                             />
                         </Layout.Col>
                     </Layout.Row>
                 </div>
             </div>
         );
-    
     };
 };
 

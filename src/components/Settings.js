@@ -57,6 +57,10 @@ class Settings extends Component {
                             if (number < 0 || number > 60) {
                                 callback(new Error('Please input a valid time'))
                             }
+                            // eslint-disable-next-line
+                            if (!(value.toString().length == 2)) {
+                                callback(new Error('Please use 2 digits'))
+                            }                            
                             else {
                                 callback();
                             }
@@ -93,6 +97,10 @@ class Settings extends Component {
                             if (number < 0 || number > 60) {
                                 callback(new Error('Please input a valid time'))
                             }
+                            // eslint-disable-next-line
+                            if (!(value.toString().length == 2)) {
+                                callback(new Error('Please use 2 digits'))
+                            }                           
                             else {
                                 callback();
                             }
@@ -129,6 +137,10 @@ class Settings extends Component {
                             if (number < 0 || number > 60) {
                                     callback(new Error('Please input a valid time'))
                             }
+                            // eslint-disable-next-line   
+                            if (!(value.toString().length == 2)) {
+                                callback(new Error('Please use 2 digits'))
+                            }                                
                             else {
                                 callback();
                             }

@@ -183,42 +183,43 @@ class Settings extends Component {
                 <Button id="settingsTitle" type="primary" onClick={ () => this.setState({dialogVisible: true}) }>Settings</Button>
                 <Dialog
                     title="Set your times here!"
+                    size="tiny"
                     visible={ this.state.dialogVisible }
                     onCancel={ () => this.setState({ dialogVisible: false }) }>
                     <Dialog.Body>
                         <Form ref="form" model={this.state.form} rules={this.state.rules}>
                             <Layout.Row>
                                 <Layout.Col span="12">
-                                    <Form.Item label="Working Minutes" prop="workingMin" labelWidth="100">
+                                    <Form.Item label="Working Minutes" prop="workingMin">
                                         <Input value={this.state.form.workingMin} onChange={this.onChange.bind(this, 'workingMin')}></Input>
                                     </Form.Item>
                                 </Layout.Col>
                                 <Layout.Col span="12">
-                                    <Form.Item label="Seconds" prop="workingSec" labelWidth="100">
+                                    <Form.Item label="Seconds" prop="workingSec">
                                         <Input value={this.state.form.workingSec} onChange={this.onChange.bind(this, 'workingSec')}></Input>
                                     </Form.Item> 
                                 </Layout.Col>
                             </Layout.Row>
                             <Layout.Row>
                                 <Layout.Col span="12">
-                                    <Form.Item label="Short Break Minutes" prop="shortBreakMin" labelWidth="100">
+                                    <Form.Item label="Short Break Minutes" prop="shortBreakMin">
                                         <Input value={this.state.form.shortBreakMin} onChange={this.onChange.bind(this, 'shortBreakMin')}></Input>
                                     </Form.Item>
                                 </Layout.Col>
                                 <Layout.Col span="12">
-                                    <Form.Item label="Seconds" prop="shortBreakSec" labelWidth="100">
+                                    <Form.Item label="Seconds" prop="shortBreakSec">
                                         <Input value={this.state.form.shortBreakSec} onChange={this.onChange.bind(this, 'shortBreakSec')}></Input>
                                     </Form.Item>
                                 </Layout.Col>
                             </Layout.Row>
                             <Layout.Row>
                                 <Layout.Col span="12"> 
-                                    <Form.Item label="Long Break Minutes" prop="longBreakMin" labelWidth="100">
+                                    <Form.Item label="Long Break Minutes" prop="longBreakMin">
                                         <Input value={this.state.form.longBreakMin} onChange={this.onChange.bind(this, 'longBreakMin')}></Input>
                                     </Form.Item>
                                 </Layout.Col>
                                 <Layout.Col span="12">
-                                    <Form.Item label="Seconds" prop="longBreakSec" labelWidth="100">
+                                    <Form.Item label="Seconds" prop="longBreakSec">
                                         <Input value={this.state.form.longBreakSec} onChange={this.onChange.bind(this, 'longBreakSec')}></Input>
                                     </Form.Item>
                                 </Layout.Col>  

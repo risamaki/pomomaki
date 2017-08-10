@@ -11,3 +11,7 @@
 .settingsTimer {
   margin-top:10px;
 }
+
+.el-col.el-col-12 {
+  padding-right: 20px;
+}

@@ -36,7 +36,10 @@ class Settings extends Component {
                                 callback (new Error('Please input valid digits'));
                             } 
                             if (number < 0) {
-                                callback(new Error('Please input a valid time'))
+                                callback(new Error('Please input a valid time'));
+                            }
+                            if (number <= this.state.form.shortBreakMin || number <= this.state.form.longBreakMin) {
+                                callback(new Error('Working Time has to be longer than Break Time'));
                             }
                             else {
                                 callback();
@@ -56,6 +59,12 @@ class Settings extends Component {
                             if (number < 0) {
                                 callback(new Error('Please input a valid time'))
                             }
+                            if (number >= this.state.form.workingMin) {
+                                callback(new Error('Working Time has to be longer than Break Time'));
+                            }
+                            if (number >= this.state.form.longBreakMin) {
+                                callback (new Error('Short Break Time has to be less than Long Break Time'))
+                            }
                             else {
                                 callback();
                             }
@@ -73,6 +82,12 @@ class Settings extends Component {
                             } 
                             if (number < 0) {
                                     callback(new Error('Please input a valid time'))
+                            }
+                            if (number >= this.state.form.workingMin) {
+                                callback(new Error('Working Time has to be longer than Break Time'));
+                            }
+                            if (number <= this.state.form.shortBreakMin) {
+                                callback (new Error('Short Break Time has to be less than Long Break Time'))
                             }
                             else {
                                 callback();

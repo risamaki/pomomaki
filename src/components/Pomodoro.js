@@ -12,7 +12,7 @@ class Pomodoro extends Component {
         super(props);
         this.state = {
             minutes: props.workingMin,
-            seconds: props.workingSec,
+            seconds: props.seconds,
             timerType: "Working",
         };
         this.handleTimerSwitch = this.handleTimerSwitch.bind(this);
@@ -23,7 +23,7 @@ class Pomodoro extends Component {
      componentWillReceiveProps(props) {
         this.setState({
             minutes: props.workingMin, 
-            seconds: props.workingSec,
+            seconds: props.seconds,
             timerType: "Working"
         });
     }
@@ -40,14 +40,14 @@ class Pomodoro extends Component {
                 this.workingPomoCount = 0;
                 this.setState({
                     minutes: this.props.longBreakMin,
-                    seconds: this.props.longBreakSec,
+                    seconds: this.props.seconds,
                     timerType: "Break"
                 });
             } else {
                 // switch to basic break timer 
                 this.setState({
                     minutes: this.props.shortBreakMin,
-                    seconds: this.props.shortBreakSec,
+                    seconds: this.props.seconds,
                     timerType: "Break"
                 });
             }
@@ -57,7 +57,7 @@ class Pomodoro extends Component {
             // switch to working timer
             this.setState({
                 minutes: this.props.workingMin,
-                seconds: this.props.workingSec,
+                seconds: this.props.seconds,
                 timerType: "Working"
             });
         }

@@ -13,6 +13,7 @@ class Pomodoro extends Component {
         this.state = {
             minutes: props.workingMin,
             seconds: props.seconds,
+            longBreakCount: props.longBreakCount,
             timerType: "Working",
         };
         this.handleTimerSwitch = this.handleTimerSwitch.bind(this);
@@ -24,6 +25,7 @@ class Pomodoro extends Component {
         this.setState({
             minutes: props.workingMin, 
             seconds: props.seconds,
+            longBreakCount: props.longBreakCount,
             timerType: "Working"
         });
     }
@@ -35,7 +37,7 @@ class Pomodoro extends Component {
             this.workingPomoCount++;
             // if 3 pomo's have been completed trigger long break
             // eslint-disable-next-line
-            if (this.workingPomoCount == 3) {
+            if (this.workingPomoCount == this.props.longBreakCount) {
                 // Reset Pomo count
                 this.workingPomoCount = 0;
                 this.setState({

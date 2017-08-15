@@ -23,6 +23,7 @@ class Settings extends Component {
                 workingMin: '25',
                 shortBreakMin: '5',
                 longBreakMin: '15',
+                longBreakCount: '3',
             },
             rules: {
 
@@ -95,6 +96,25 @@ class Settings extends Component {
                         }, 1000);
                     }, trigger :'change'}
                 ],
+
+                // Rules for the Long Break Count 
+                longBreakCount: [
+                    {required: true, message: "Please indicate how many Pomodoro's should be completed before a longer break", trigger:'blur'},
+                    {validator: (rule, value, callback) => {
+                        var number = parseInt(value, 10);
+                        setTimeout ( () => {
+                            if (!Number.isInteger(number)) {
+                                callback (new Error('Please input valid digits'));
+                            }
+                            if (number <= 0 || number > 10) {
+                                callback(new Error('Please a value between 1 and 10'))
+                            }
+                            else {
+                                callback();
+                            } 
+                        }, 1000);
+                    }, trigger: 'change'}
+                ]
             }
         }        
     }
@@ -130,7 +150,7 @@ class Settings extends Component {
             <div className = "Settings">
                 <Button id="settingsTitle" type="primary" onClick={ () => this.setState({dialogVisible: true}) }>Settings</Button>
                 <Dialog
-                    title="Set your times here!"
+                    title="Settings!"
                     size="tiny"
                     visible={ this.state.dialogVisible }
                     onCancel={ () => this.setState({ dialogVisible: false }) }>
@@ -151,6 +171,11 @@ class Settings extends Component {
                                     <Input value={this.state.form.longBreakMin} onChange={this.onChange.bind(this, 'longBreakMin')}></Input>
                                 </Form.Item>
                             </Layout.Row>
+                            <Layout.Row>
+                                <Form.Item label="Number of Pomodoro's Before Long Break" prop="longBreakCount">
+                                    <Input value={this.state.form.longBreakCount} onChange={this.onChange.bind(this, 'longBreakCount')}></Input>
+                                </Form.Item>
+                            </Layout.Row>
                         </Form>
                     </Dialog.Body>
                     <Dialog.Footer className="dialog-footer">
@@ -165,6 +190,7 @@ class Settings extends Component {
                                 workingMin = {this.state.form.workingMin}
                                 shortBreakMin = {this.state.form.shortBreakMin}
                                 longBreakMin = {this.state.form.longBreakMin}
+                                longBreakCount = {this.state.form.longBreakCount}
                                 seconds = {this.state.seconds}
                             />
                         </Layout.Col>
